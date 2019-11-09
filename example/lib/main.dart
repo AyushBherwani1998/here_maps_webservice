@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
     try {
       currentLocation = await location.getLocation();
       setState(() {
-        _explorePlace = HereMaps(appId: "yourAppID", appCode: "yourAppCode")
+        _explorePlace = HereMaps(appId: null, appCode: null)
             .exploreNearbyPlaces(
                 lat: currentLocation.latitude.toString(),
                 lon: currentLocation.longitude.toString());
