@@ -81,8 +81,8 @@ class _MyHomePageState extends State<MyHomePage> {
       setState(() {
         _explorePlace = HereMaps(appId: null, appCode: null)
             .exploreNearbyPlaces(
-                lat: currentLocation.latitude.toString(),
-                lon: currentLocation.longitude.toString());
+                lat: currentLocation.latitude,
+                lon: currentLocation.longitude);
       });
     } on PlatformException catch (error) {
       if (error.code == 'PERMISSION_DENIED') {
