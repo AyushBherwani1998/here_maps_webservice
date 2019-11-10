@@ -15,10 +15,10 @@ class HereMaps {
       : assert(appId != null, "appId can't be null"),
         assert(appCode != null, "appCode can't be null");
 
-  /// Returns a list of places close to a location
 
+  /// Returns a list of places close to a location
   Future<List<Item>> exploreNearbyPlaces(
-      {@required double lat, @required double lon, int offset}) async {
+      {@required double lat, @required double lon, int offset=20}) async {
     assert(lat != null, "lat can't be null");
     assert(lon != null, "lon can't be null");
     assert(offset >= 0, "offset can't be negative");
@@ -29,16 +29,56 @@ class HereMaps {
 
     Map<String, String> body = Map();
     body["at"] = '$lat,$lon';
-    body['size'] = offset?.toString() ?? "20";
+    body['size'] = offset.toString();
     body["app_id"] = this.appId;
     body["app_code"] = this.appCode;
+    body["tf"] = "plain";
 
     var uri = Uri.http('places.api.here.com', '/places/v1/discover/here', body);
     http.Response response = await http.get(uri, headers: _headers);
-    return NearbyPlaces.fromJson(json.decode(response.body)).results.items;
+    return Places.fromJson(json.decode(response.body)).results.items;
   }
 
-  ///Get better search suggestions for your addresses with fewer keystrokes.
+
+  /// Request a list of popular places around a location.
+  Future<List<Item>> explorePopularPlaces({@required double lat, @required double lon, Categories category,int offset=20})async{
+    assert(lat != null, "lat can't be null");
+    assert(lon != null, "lon can't be null");
+    assert(offset >= 0, "offset can't be negative");
+
+    Map<String,String> categoryMap={
+      "eatAndDrink":"eat-drink",
+      "goingOut": "going-out",
+      "sightsMuseums": "sights-museums",
+      "atmBankExchange": "atm-bank-exchange",
+      "petrolStation": "petrol-station"
+    };
+
+    String cat;
+    if(category!=null){
+      cat = category.toString().substring(category.toString().indexOf('.')+1);
+    }
+    var _headers = {
+      "Accept": "application/json",
+    };
+
+
+    Map<String, String> body = Map();
+    body["at"] = '$lat,$lon';
+    if(cat!=null)
+      body['cat'] = categoryMap.containsKey(cat)?categoryMap[cat]:cat;
+    body['size'] = offset.toString();
+    body["app_id"] = this.appId;
+    body["app_code"] = this.appCode;
+    body["tf"] = "plain";
+
+    var uri = Uri.http('places.api.here.com', '/places/v1/discover/explore', body);
+    http.Response response = await http.get(uri, headers: _headers);
+    print(uri);
+    print(json.decode(response.body));
+    return Places.fromJson(json.decode(response.body)).results.items;
+  }
+
 
   Future<List<Suggestion>> geoCodingAutoComplete(
       {@required String query}) async {
@@ -87,6 +127,21 @@ class HereMaps {
   }
 }
 
+/// Options of GeoCoder
 enum GeoCoder {
   coordinates,
+}
+
+
+/// Categories for explorePopularPlaces
+enum Categories{
+  eatAndDrink,
+  goingOut,
+  sightsMuseums,
+  transport,
+  accommodation,
+  shopping,
+  atmBankExchange,
+  hospital,
+  petrolStation
 }

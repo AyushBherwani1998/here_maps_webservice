@@ -1,19 +1,19 @@
 import 'dart:convert';
 
-NearbyPlaces nearbyPlacesFromJson(String str) => NearbyPlaces.fromJson(json.decode(str));
+Places placesFromJson(String str) => Places.fromJson(json.decode(str));
 
-String nearbyPlacesToJson(NearbyPlaces data) => json.encode(data.toJson());
+String placesToJson(Places data) => json.encode(data.toJson());
 
-class NearbyPlaces {
+class Places {
   Results results;
   Search search;
 
-  NearbyPlaces({
+  Places({
     this.results,
     this.search,
   });
 
-  factory NearbyPlaces.fromJson(Map<String, dynamic> json) => NearbyPlaces(
+  factory Places.fromJson(Map<String, dynamic> json) => Places(
     results: Results.fromJson(json["results"]),
     search: Search.fromJson(json["search"]),
   );
