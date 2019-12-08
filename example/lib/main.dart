@@ -1,8 +1,9 @@
+import 'package:example/exploreNearByPlaces.dart';
+import 'package:example/explorePopularPLaces.dart';
+import 'package:example/geoCoding.dart';
+import 'package:example/geoCodingAutoComplete.dart';
+import 'package:example/reverseGeoCoding.dart';
 import 'package:flutter/material.dart';
-import 'package:here_maps/here_maps.dart';
-import 'package:here_maps/models/exploreNearbyPlacesModel.dart';
-import 'package:location/location.dart' as l;
-import 'package:flutter/services.dart';
 
 /// Example to show nearby places around you
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Explore Nearby Places Example'),
+      home: MyHomePage(title: 'HereMaps Web Service Example'),
     );
   }
 }
@@ -31,11 +32,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Future<List<Item>> _explorePlace;
-
   @override
   void initState() {
-    getLocation();
     super.initState();
   }
 
@@ -46,48 +44,59 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: FutureBuilder<List<Item>>(
-        future: _explorePlace,
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (context, index) {
-                  return Card(
-                    child: ListTile(
-                      title: Text(snapshot.data[index].title),
-                      subtitle: Text(
-                          "Category: ${snapshot.data[index].category.title}"),
-                    ),
-                  );
-                });
-          } else {
-            return Container(
-              alignment: Alignment.center,
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ExploreNearbyPlaces()));
+            },
+            child: getContainer("Nearby Places"),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ExplorePopularPlaces()));
+            },
+            child: getContainer("Popular Places"),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => GeoCodingAutoComplete()));
+            },
+            child: getContainer("GeoCoding Auto Complete"),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => GeoCoding()));
+            },
+            child: getContainer("GeoCoding"),
+          ),
+          FlatButton(
+            onPressed: () {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => ReverseGeoCoding()));
+            },
+            child: getContainer("Reverse GeoCoding"),
+          )
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  void getLocation() async {
-    var currentLocation;
-    var location = new l.Location();
-
-    try {
-      currentLocation = await location.getLocation();
-      setState(() {
-        _explorePlace = HereMaps(appId: null, appCode: null)
-            .exploreNearbyPlaces(
-                lat: currentLocation.latitude,
-                lon: currentLocation.longitude);
-      });
-    } on PlatformException catch (error) {
-      if (error.code == 'PERMISSION_DENIED') {
-        print("Permission Dennied");
-      }
-    }
+  getContainer(String text) {
+    return Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(24),
+      color: Colors.blueAccent,
+      width: MediaQuery.of(context).size.width,
+      child: Text(
+        text,
+        style: TextStyle(color: Colors.white, fontSize: 18),
+      ),
+    );
   }
 }
