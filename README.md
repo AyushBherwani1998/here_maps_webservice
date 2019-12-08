@@ -29,7 +29,7 @@ Run `flutter pub get` in the terminal and import `import 'package:here_maps_webs
 
 ## Generate App ID and App Code
 Go to https://developer.here.com/ and create a new account if you don't have one. Create a new project and select Freemium Plan.
-Under the REST & XYZ HUB API/CLI section click on Generate App ID and App Code.
+Under the REST & XYZ HUB API/CLI section of your project, click on Generate App ID and App Code.
 
 ## Example
 
