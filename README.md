@@ -153,3 +153,6 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
 
 ## Feature Requests and Issues
 Please file feature requests and bugs at the [issue tracker](https://github.com/AyushBherwani1998/here_maps_webservice/issues)
+
+## Contributing
+We would love to see you contribute to here_maps_webservice. Do check out our [Contributing Guidelines](https://github.com/AyushBherwani1998/here_maps_webservice/blob/master/CONTRIBUTING.md).
