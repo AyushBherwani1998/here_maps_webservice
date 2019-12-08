@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:here_maps_webservice/here_maps.dart';
+import 'package:here_maps_webservice/here_maps_webservice.dart';
 import 'package:location/location.dart' as l;
 import 'package:flutter/services.dart';
 

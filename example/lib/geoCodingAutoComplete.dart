@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:here_maps_webservice/here_maps.dart';
+import 'package:here_maps_webservice/here_maps_webservice.dart';
 import 'package:flutter/services.dart';
 
 class GeoCodingAutoComplete extends StatefulWidget {
