@@ -147,6 +147,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
 
 ## TODO
 - Add all the parameters in the existing APIs
+- Add tests
 - Make Model class for exisitng APIs
 - Add routing APIs
 
