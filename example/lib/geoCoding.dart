@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:here_maps/here_maps.dart';
+import 'package:here_maps_webservice/here_maps.dart';
 
 class GeoCoding extends StatefulWidget {
   @override
@@ -98,7 +98,7 @@ class _GeoCodingState extends State<GeoCoding> {
   }
 
   void getGeoCode() {
-    HereMaps(appId: "4tnnFEQwe0pLywZzFGUp", appCode: "xTchV_ZrdfjkVO-0cyMz6Q")
+    HereMaps(appId: "yourAppId", appCode: "youAppCode")
         .geoCode(searchText: _searchController.text)
         .then((response) {
       print(response['Response']['View'][0]['Result'][0]['Location']

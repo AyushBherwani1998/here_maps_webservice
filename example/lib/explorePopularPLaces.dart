@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:here_maps/here_maps.dart';
+import 'package:here_maps_webservice/here_maps.dart';
 import 'package:location/location.dart' as l;
 import 'package:flutter/services.dart';
 
 class ExplorePopularPlaces extends StatefulWidget {
-
   @override
   _ExplorePopularPlacesState createState() => _ExplorePopularPlacesState();
 }
@@ -28,20 +27,20 @@ class _ExplorePopularPlacesState extends State<ExplorePopularPlaces> {
       ),
       body: _explorePopularPlace.isNotEmpty
           ? ListView.builder(
-          itemCount: _explorePopularPlace.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text(_explorePopularPlace[index]['title']),
-                subtitle: Text(
-                    "Category: ${_explorePopularPlace[index]['category']['title']}"),
-              ),
-            );
-          })
+              itemCount: _explorePopularPlace.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(_explorePopularPlace[index]['title']),
+                    subtitle: Text(
+                        "Category: ${_explorePopularPlace[index]['category']['title']}"),
+                  ),
+                );
+              })
           : Container(
-        alignment: Alignment.center,
-        child: LinearProgressIndicator(),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+              alignment: Alignment.center,
+              child: LinearProgressIndicator(),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
@@ -51,9 +50,11 @@ class _ExplorePopularPlacesState extends State<ExplorePopularPlaces> {
 
     try {
       currentLocation = await location.getLocation();
-      HereMaps(appId: "4tnnFEQwe0pLywZzFGUp", appCode: "xTchV_ZrdfjkVO-0cyMz6Q")
+      HereMaps(appId: "yourAppId", appCode: "youAppCode")
           .explorePopularPlaces(
-          lat: currentLocation.latitude, lon: currentLocation.longitude,offset: 10)
+              lat: currentLocation.latitude,
+              lon: currentLocation.longitude,
+              offset: 10)
           .then((response) {
         print(response);
         setState(() {

@@ -5,7 +5,7 @@ import 'package:example/geoCodingAutoComplete.dart';
 import 'package:example/reverseGeoCoding.dart';
 import 'package:flutter/material.dart';
 
-/// Example to show nearby places around you
+
 
 void main() => runApp(MyApp());
 

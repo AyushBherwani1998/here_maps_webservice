@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:here_maps/here_maps.dart';
+import 'package:here_maps_webservice/here_maps.dart';
 import 'package:location/location.dart' as l;
 import 'package:flutter/services.dart';
 
@@ -55,7 +55,7 @@ class _ReverseGeoCodingState extends State<ReverseGeoCoding> {
           currentLocation = location;
         });
       });
-      HereMaps(appId: "4tnnFEQwe0pLywZzFGUp", appCode: "xTchV_ZrdfjkVO-0cyMz6Q")
+      HereMaps(appId: "yourAppId", appCode: "youAppCode")
           .reverseGeoCode(mode: ReverseGeoCodeModes.retrieveAreas,
               lat: currentLocation.latitude, lon: currentLocation.longitude)
           .then((response) {

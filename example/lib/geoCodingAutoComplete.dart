@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:here_maps/here_maps.dart';
+import 'package:here_maps_webservice/here_maps.dart';
 import 'package:flutter/services.dart';
 
 class GeoCodingAutoComplete extends StatefulWidget {
@@ -68,9 +68,7 @@ class _GeoCodingAutoCompleteState extends State<GeoCodingAutoComplete> {
             setState(() {
               _searchController.text = value;
               _suggestion.clear();
-              HereMaps(
-                      appId: "4tnnFEQwe0pLywZzFGUp",
-                      appCode: "xTchV_ZrdfjkVO-0cyMz6Q")
+              HereMaps(appId: "yourAppId", appCode: "youAppCode")
                   .geoCodingAutoComplete(query: _searchController.text)
                   .then((response) {
                 print(response);
