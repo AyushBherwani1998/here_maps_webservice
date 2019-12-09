@@ -3,6 +3,9 @@
     <img alt="Here" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/1200px-HERE_logo.svg.png" width="100" />
   </a>
 </p>
+<p align="center">here_maps_webservice</p>
+
+[![pub package](https://img.shields.io/pub/v/here_maps_webservice.svg)](https://pub.dev/packages/here_maps_webservice)
 
 ## About 
 
