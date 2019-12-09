@@ -64,7 +64,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
 
 ```
 
-##### Populare Places
+##### Popular Places
 ```DART
     import 'package:here_maps_webservice/here_maps.dart';
     import 'package:location/location.dart' as l; 
