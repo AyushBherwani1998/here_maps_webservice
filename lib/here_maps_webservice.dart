@@ -4,18 +4,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-/// [appId] and [appCode] can be obtained from the REST & XYZ HUB API/CLI
+/// [apiKey] can be obtained from the REST section
 /// given under the Freemium Projects
 
 class HereMaps {
-  final String appId;
-  final String appCode;
+  final String apiKey;
 
-  HereMaps({@required this.appId, @required this.appCode})
-      : assert(appId != null, "appId can't be null"),
-        assert(appCode != null, "appCode can't be null");
-
-
+  HereMaps({@required this.apiKey})
+      :assert(apiKey != null, "apiKey can't be null");
 
   /// exploreNearbyPlaces returns a List of places near the center of the [lat] and [lon] given
   /// [offset] can be given to set the number of results returned by exploreNearbyPlaces
@@ -38,15 +34,12 @@ class HereMaps {
     Map<String, String> body = Map();
     body["at"] = '$lat,$lon';
     body['size'] = offset.toString();
-    body["app_id"] = this.appId;
-    body["app_code"] = this.appCode;
+    body["apiKey"] = this.apiKey;
     body["tf"] = "plain";
 
-    var uri = Uri.http('places.api.here.com', '/places/v1/discover/here', body);
+    var uri = Uri.https('places.ls.hereapi.com', '/places/v1/discover/here', body);
     return makeApiCall(nextUrl ?? uri, _headers);
   }
-
-
 
   /// exploreNearbyPlaces returns a List of popular places near the center of the [lat] and [lon] given
   /// [category] can be given to retrieve the popular places of particular [category]
@@ -85,16 +78,13 @@ class HereMaps {
     if (cat != null)
       body['cat'] = categoryMap.containsKey(cat) ? categoryMap[cat] : cat;
     body['size'] = offset.toString();
-    body["app_id"] = this.appId;
-    body["app_code"] = this.appCode;
+    body["apiKey"] = this.apiKey;
     body["tf"] = "plain";
 
     var uri =
-        Uri.http('places.api.here.com', '/places/v1/discover/explore', body);
+        Uri.https('places.ls.hereapi.com', '/places/v1/discover/explore', body);
     return makeApiCall(nextUrl ?? uri, _headers);
   }
-
-
 
   /// geoCodingAutoComplete provides better results for address searches with fewer keystrokes
   /// [query] is the mandatory parameter. The Results is returned on the basis of [query]
@@ -110,16 +100,13 @@ class HereMaps {
     };
     Map<String, String> data = Map();
     data["query"] = query;
-    data["app_id"] = this.appId;
-    data["app_code"] = this.appCode;
+    data["apiKey"] = this.apiKey;
     data['maxResults'] = '$maxResults';
 
-    var uri = Uri.http(
-        'autocomplete.geocoder.api.here.com', '/6.2/suggest.json', data);
+    var uri = Uri.https(
+        'autocomplete.geocoder.ls.hereapi.com', '/6.2/suggest.json', data);
     return makeApiCall(uri, _headers);
   }
-
-
 
   /// geoCode can be used to retrieves the latitude, longitude and complete address details
   /// based on the [searchText] provided
@@ -132,14 +119,11 @@ class HereMaps {
     };
     Map<String, String> data = Map();
     data["searchtext"] = searchText;
-    data["app_id"] = this.appId;
-    data["app_code"] = this.appCode;
+    data["apiKey"] = this.apiKey;
 
-    var uri = Uri.http('geocoder.api.here.com', '/6.2/geocode.json', data);
+    var uri = Uri.https('geocoder.ls.hereapi.com', '/6.2/geocode.json', data);
     return makeApiCall(uri, _headers);
   }
-
-
 
   /// reverseGeoCode retrieves the first address around a specified [lat] & [long]
   /// using a 250 meter radius to retrieve the address.
@@ -165,12 +149,11 @@ class HereMaps {
     };
     Map<String, String> data = Map();
     data["prox"] = '$lat,$lon';
-    data["app_id"] = this.appId;
-    data["app_code"] = this.appCode;
+    data["apiKey"] = this.apiKey;
     data['mode'] = mode.toString().substring(mode.toString().indexOf('.') + 1);
 
-    var uri = Uri.http(
-        'reverse.geocoder.api.here.com', '/6.2/reversegeocode.json', data);
+    var uri = Uri.https(
+        'reverse.geocoder.ls.hereapi.com', '/6.2/reversegeocode.json', data);
     return makeApiCall(uri, _headers);
   }
 }

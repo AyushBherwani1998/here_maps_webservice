@@ -55,7 +55,7 @@ class _ReverseGeoCodingState extends State<ReverseGeoCoding> {
           currentLocation = location;
         });
       });
-      HereMaps(appId: "yourAppId", appCode: "youAppCode")
+      HereMaps(apiKey: "your apiKey")
           .reverseGeoCode(mode: ReverseGeoCodeModes.retrieveAreas,
               lat: currentLocation.latitude, lon: currentLocation.longitude)
           .then((response) {

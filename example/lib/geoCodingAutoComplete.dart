@@ -68,7 +68,7 @@ class _GeoCodingAutoCompleteState extends State<GeoCodingAutoComplete> {
             setState(() {
               _searchController.text = value;
               _suggestion.clear();
-              HereMaps(appId: "yourAppId", appCode: "youAppCode")
+              HereMaps(apiKey: "your apiKey")
                   .geoCodingAutoComplete(query: _searchController.text)
                   .then((response) {
                 print(response);

@@ -50,7 +50,7 @@ class _ExplorePopularPlacesState extends State<ExplorePopularPlaces> {
 
     try {
       currentLocation = await location.getLocation();
-      HereMaps(appId: "yourAppId", appCode: "youAppCode")
+      HereMaps(apiKey: "your apiKey")
           .explorePopularPlaces(
               lat: currentLocation.latitude,
               lon: currentLocation.longitude,

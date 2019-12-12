@@ -98,7 +98,7 @@ class _GeoCodingState extends State<GeoCoding> {
   }
 
   void getGeoCode() {
-    HereMaps(appId: "yourAppId", appCode: "youAppCode")
+    HereMaps(apiKey: "your apiKey")
         .geoCode(searchText: _searchController.text)
         .then((response) {
       print(response['Response']['View'][0]['Result'][0]['Location']

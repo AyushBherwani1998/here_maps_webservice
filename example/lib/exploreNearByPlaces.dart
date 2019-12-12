@@ -51,7 +51,7 @@ class _ExploreNearbyPlacesState extends State<ExploreNearbyPlaces> {
 
     try {
       currentLocation = await location.getLocation();
-      HereMaps(appId: "yourAppId", appCode: "youAppCode")
+      HereMaps(apiKey: "your apiKey")
           .exploreNearbyPlaces(
           lat: currentLocation.latitude, lon: currentLocation.longitude,offset: 10)
           .then((response) {
