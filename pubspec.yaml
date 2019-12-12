@@ -1,6 +1,6 @@
 name: here_maps_webservice
 description: Flutter Package to provide Here Maps Web Services API wrapper that serve different purposes from search, to geocoding.
-version: 1.0.0
+version: 1.0.1
 author: Ayush Bherwani <ayush.bherwani1998@gmail.com>
 homepage: https://github.com/AyushBherwani1998/here_maps_webservice
 
