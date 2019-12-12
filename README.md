@@ -3,6 +3,9 @@
     <img alt="Here" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/HERE_logo.svg/1200px-HERE_logo.svg.png" width="100" />
   </a>
 </p>
+<p align="center">here_maps_webservice</p>
+
+[![pub package](https://img.shields.io/pub/v/here_maps_webservice.svg)](https://pub.dev/packages/here_maps_webservice)
 
 ## About 
 
@@ -61,7 +64,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
 
 ```
 
-##### Populare Places
+##### Popular Places
 ```DART
     import 'package:here_maps_webservice/here_maps.dart';
     import 'package:location/location.dart' as l; 
