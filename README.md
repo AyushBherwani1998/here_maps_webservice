@@ -18,7 +18,7 @@ Add `here_maps_webservice`as a dependency in your pubspec.yaml
  dependencies:
   flutter:
     sdk: flutter
-  here_maps_webservice: any
+  here_maps_webservice: 1.0.1
 ```
 Run `flutter pub get` in the terminal and import `import 'package:here_maps_webservice/here_maps.dart'`
 
@@ -30,9 +30,9 @@ Run `flutter pub get` in the terminal and import `import 'package:here_maps_webs
 - [Explore Popular Places](https://developer.here.com/documentation/examples/rest/places/explore-popular-places)
 
 
-## Generate App ID and App Code
+## Generate API KEY
 Go to https://developer.here.com/ and create a new account if you don't have one. Create a new project and select Freemium Plan.
-Under the REST & XYZ HUB API/CLI section of your project, click on Generate App ID and App Code.
+Under the REST section of your project, click on Create API key.
 
 ## Example
 
@@ -54,7 +54,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
       }
     }
     
-    HereMaps(appId: "yourAppId", appCode: "youAppCode")
+    HereMaps(apiKey: "your apiKey")
           .exploreNearbyPlaces( lat: currentLocation.latitude, lon: currentLocation.longitude,offset: 10)
           .then((response) {
               setState(() {
@@ -82,7 +82,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
       }
     }
     
-    HereMaps(appId: "yourAppId", appCode: "youAppCode")
+    HereMaps(apiKey: "your apiKey")
           .explorePopularPlaces(
               lat: currentLocation.latitude,
               lon: currentLocation.longitude,
@@ -101,7 +101,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
      
      List<dynamic> _suggestion = [];
      
-     HereMaps(appId: "yourAppId", appCode: "youAppCode")
+     HereMaps(apiKey: "your apiKey")
            .geoCodingAutoComplete(query: "YourQuery")
            .then((response) {
          setState(() {
@@ -116,7 +116,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
     
     Map<String, dynamic> latLon = Map();
     
-    HereMaps(appId: "yourAppId", appCode: "youAppCode")
+    HereMaps(apiKey: "your apiKey")
         .geoCode(searchText: _searchController.text)
         .then((response) {
       setState(() {
@@ -143,7 +143,7 @@ Under the REST & XYZ HUB API/CLI section of your project, click on Generate App 
       }
     }
     
-    Map<String,dynamic> response = HereMaps(appId: "yourAppId", appCode: "youAppCode")
+    Map<String,dynamic> response = HereMaps(apiKey: "your apiKey")
       .reverseGeoCode(lat: currentLocation.latitude, lon: currentLocation.longitude)
 
 ```
