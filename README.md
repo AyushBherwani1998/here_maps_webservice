@@ -18,7 +18,7 @@ Add `here_maps_webservice`as a dependency in your pubspec.yaml
  dependencies:
   flutter:
     sdk: flutter
-  here_maps_webservice: 1.0.1
+  here_maps_webservice: 1.0.2
 ```
 Run `flutter pub get` in the terminal and import `import 'package:here_maps_webservice/here_maps.dart'`
 
