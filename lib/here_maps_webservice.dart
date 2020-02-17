@@ -11,7 +11,7 @@ class HereMaps {
   final String apiKey;
 
   HereMaps({@required this.apiKey})
-      :assert(apiKey != null, "apiKey can't be null");
+      : assert(apiKey != null, "apiKey can't be null");
 
   /// exploreNearbyPlaces returns a List of places near the center of the [lat] and [lon] given
   /// [offset] can be given to set the number of results returned by exploreNearbyPlaces
@@ -37,7 +37,8 @@ class HereMaps {
     body["apiKey"] = this.apiKey;
     body["tf"] = "plain";
 
-    var uri = Uri.https('places.ls.hereapi.com', '/places/v1/discover/here', body);
+    var uri =
+        Uri.https('places.ls.hereapi.com', '/places/v1/discover/here', body);
     return makeApiCall(nextUrl ?? uri, _headers);
   }
 

@@ -4,7 +4,6 @@ import 'package:location/location.dart' as l;
 import 'package:flutter/services.dart';
 
 class ExploreNearbyPlaces extends StatefulWidget {
-
   @override
   _ExploreNearbyPlacesState createState() => _ExploreNearbyPlacesState();
 }
@@ -28,20 +27,20 @@ class _ExploreNearbyPlacesState extends State<ExploreNearbyPlaces> {
       ),
       body: _explorePlace.isNotEmpty
           ? ListView.builder(
-          itemCount: _explorePlace.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                title: Text(_explorePlace[index]['title']),
-                subtitle: Text(
-                    "Category: ${_explorePlace[index]['category']['title']}"),
-              ),
-            );
-          })
+              itemCount: _explorePlace.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  child: ListTile(
+                    title: Text(_explorePlace[index]['title']),
+                    subtitle: Text(
+                        "Category: ${_explorePlace[index]['category']['title']}"),
+                  ),
+                );
+              })
           : Container(
-        alignment: Alignment.center,
-        child: LinearProgressIndicator(),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+              alignment: Alignment.center,
+              child: LinearProgressIndicator(),
+            ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
@@ -53,7 +52,9 @@ class _ExploreNearbyPlacesState extends State<ExploreNearbyPlaces> {
       currentLocation = await location.getLocation();
       HereMaps(apiKey: "your apiKey")
           .exploreNearbyPlaces(
-          lat: currentLocation.latitude, lon: currentLocation.longitude,offset: 10)
+              lat: currentLocation.latitude,
+              lon: currentLocation.longitude,
+              offset: 10)
           .then((response) {
         print(response);
         setState(() {

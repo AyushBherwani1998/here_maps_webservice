@@ -29,8 +29,9 @@ class _ReverseGeoCodingState extends State<ReverseGeoCoding> {
         children: <Widget>[
           Container(
             alignment: Alignment.center,
-            child: Text(currentLocation!=null?
-                "${currentLocation.latitude},${currentLocation.longitude}":"Loading"),
+            child: Text(currentLocation != null
+                ? "${currentLocation.latitude},${currentLocation.longitude}"
+                : "Loading"),
           ),
           SizedBox(
             height: 20,
@@ -38,7 +39,7 @@ class _ReverseGeoCodingState extends State<ReverseGeoCoding> {
           Container(
             padding: EdgeInsets.all(24),
             alignment: Alignment.center,
-            child: Text(address??"Loading"),
+            child: Text(address ?? "Loading"),
           )
         ],
       ),
@@ -56,13 +57,15 @@ class _ReverseGeoCodingState extends State<ReverseGeoCoding> {
         });
       });
       HereMaps(apiKey: "your apiKey")
-          .reverseGeoCode(mode: ReverseGeoCodeModes.retrieveAreas,
-              lat: currentLocation.latitude, lon: currentLocation.longitude)
+          .reverseGeoCode(
+              mode: ReverseGeoCodeModes.retrieveAreas,
+              lat: currentLocation.latitude,
+              lon: currentLocation.longitude)
           .then((response) {
         print(response);
         setState(() {
           address = response['Response']['View'][0]['Result'][0]['Location']
-          ['Address']['Label'];
+              ['Address']['Label'];
         });
       });
     } on PlatformException catch (error) {

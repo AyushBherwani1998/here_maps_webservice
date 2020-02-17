@@ -5,8 +5,6 @@ import 'package:example/geoCodingAutoComplete.dart';
 import 'package:example/reverseGeoCoding.dart';
 import 'package:flutter/material.dart';
 
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -77,8 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
           FlatButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => ReverseGeoCoding()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => ReverseGeoCoding()));
             },
             child: getContainer("Reverse GeoCoding"),
           )
