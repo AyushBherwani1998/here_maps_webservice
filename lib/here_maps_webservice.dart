@@ -95,7 +95,7 @@ class HereMaps {
   Future<Map<String, dynamic>> geoCodingAutoComplete(
       {@required String query, int maxResults = 1}) async {
     assert(query != null, "query can't be null");
-    assert(maxResults <= 1, "maxResults must be between 1 and 10");
+    assert(maxResults >= 1 && maxResults <= 10, "maxResults must be between 1 and 10");
     var _headers = {
       "Accept": "application/json",
     };
